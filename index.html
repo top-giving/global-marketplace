@@ -3,39 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة سوق الملابس | الهوية العصرية</title>
+    <title>منصة MODERN HUB | النسخة المظلمة</title>
     <style>
         :root {
-            --brand-main: #6c5ce7; /* البنفسجي العصري */
-            --brand-dark: #2d3436; /* الأسود الفحمي */
-            --brand-light: #f9f9ff; /* خلفية ناصعة */
-            --brand-white: #ffffff;
-            --accent-gradient: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+            --bg-dark: #0f0f12; /* لون الخلفية الكاملة للموقع */
+            --card-bg: #1e1e24; /* لون بطاقات المتاجر والمنتجات */
+            --accent-purple: #6c5ce7; 
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --gradient: linear-gradient(135deg, #6c5ce7 0%, #341f97 100%);
         }
 
         body { 
-            font-family: 'Segoe UI', Roboto, sans-serif; 
-            background-color: var(--brand-light); 
+            font-family: 'Segoe UI', Tahoma, sans-serif; 
+            background-color: var(--bg-dark); /* هنا تم تغيير الخلفية بالكامل */
             margin: 0; 
             padding: 0; 
-            color: var(--brand-dark);
+            color: var(--text-main);
         }
         
-        /* هيدر عصري متدرج */
+        /* الهيدر بتصميم عائم وفخم */
         header { 
-            background: var(--brand-dark); 
+            background: rgba(15, 15, 18, 0.95);
             padding: 30px; 
             text-align: center; 
-            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.2); 
+            border-bottom: 1px solid #333;
             position: sticky; 
             top: 0; 
             z-index: 1000;
+            backdrop-filter: blur(10px);
         }
         header h1 { 
-            color: var(--brand-white); 
             margin: 0; 
             font-size: 1.8em; 
-            background: var(--accent-gradient);
+            background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 900;
@@ -45,95 +46,97 @@
             margin-top: 15px; 
             cursor: pointer; 
             color: white; 
-            background: var(--accent-gradient); 
+            background: var(--gradient); 
             display: inline-block; 
-            padding: 12px 30px; 
-            border-radius: 12px; 
+            padding: 12px 35px; 
+            border-radius: 50px; 
             font-weight: bold;
             transition: 0.3s;
             border: none;
             box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
         }
-        .cart-box:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(108, 92, 231, 0.4); }
+        .cart-box:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(108, 92, 231, 0.5); }
 
         .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
         
-        /* بطاقات المتاجر */
+        /* بطاقات المتاجر بالهوية المظلمة */
         .store-card { 
-            background: var(--brand-white); 
-            border-radius: 24px; 
-            padding: 40px 25px; 
+            background: var(--card-bg); 
+            border-radius: 25px; 
+            padding: 45px 25px; 
             text-align: center; 
             cursor: pointer; 
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            border: 2px solid transparent;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: 0.4s; 
+            border: 1px solid #333;
         }
         .store-card:hover { 
-            border-color: #a29bfe;
-            transform: scale(1.03); 
-            box-shadow: 0 20px 40px rgba(108, 92, 231, 0.1); 
+            border-color: var(--accent-purple);
+            transform: translateY(-10px); 
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            background: #25252d;
         }
-        .store-card h2 { color: var(--brand-dark); margin-bottom: 10px; }
-        .store-card p { color: #b2bec3; font-size: 0.9em; }
+        .store-card h2 { color: var(--text-main); margin-bottom: 10px; }
+        .store-card p { color: var(--text-dim); font-size: 0.9em; }
 
         /* بطاقة المنتج */
         .product-card { 
-            background: var(--brand-white); 
+            background: var(--card-bg); 
             border-radius: 20px; 
             padding: 20px; 
             text-align: center; 
+            border: 1px solid #333;
             transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
         }
+        .product-card:hover { border-color: var(--accent-purple); }
         .img-placeholder { 
-            width: 100%; height: 280px; background: #dfe6e9; border-radius: 15px; 
-            display: flex; align-items: center; justify-content: center; color: #636e72; margin-bottom: 15px; 
+            width: 100%; height: 280px; background: #2d2d35; border-radius: 15px; 
+            display: flex; align-items: center; justify-content: center; color: #555; margin-bottom: 15px; 
+            font-size: 0.8em; text-transform: uppercase; letter-spacing: 2px;
         }
         
         /* الأزرار */
         .btn { border: none; padding: 15px; border-radius: 12px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; }
-        .btn-dark { background: var(--brand-dark); color: white; }
-        .btn-dark:hover { background: var(--brand-main); }
-        .btn-back { background: #eee; color: var(--brand-dark); width: auto; margin-bottom: 30px; display: none; }
-        .btn-whatsapp { background: #25d366; color: white; font-size: 1.1em; margin-top: 20px; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2); }
+        .btn-purple { background: var(--gradient); color: white; }
+        .btn-purple:hover { opacity: 0.9; }
+        .btn-back { background: #333; color: white; width: auto; margin-bottom: 30px; display: none; }
+        .btn-whatsapp { background: #25d366; color: white; font-size: 1.1em; margin-top: 20px; }
 
         /* السلة */
         #cartModal { 
             display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-            background: white; padding: 35px; border-radius: 30px; z-index: 2000; 
-            width: 90%; max-width: 450px; box-shadow: 0 40px 80px rgba(0,0,0,0.3); 
+            background: var(--card-bg); padding: 35px; border-radius: 30px; z-index: 2000; 
+            width: 90%; max-width: 450px; color: white; border: 1px solid #444;
         }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1500; backdrop-filter: blur(10px); }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1500; backdrop-filter: blur(10px); }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>سوق المتاجر الرجالية | MODERN HUB</h1>
-        <button class="cart-box" onclick="toggleCart()">🛒 حقيبة التسوق (<span id="cartCount">0</span>)</button>
+        <h1>MODERN HUB | TOP GIVING</h1>
+        <button class="cart-box" onclick="toggleCart()">🛒 الحقيبة الرقمية (<span id="cartCount">0</span>)</button>
     </header>
 
     <div class="container">
-        <button class="btn btn-back" id="backBtn" onclick="showStoresList()">← العودة للمتاجر</button>
+        <button class="btn btn-back" id="backBtn" onclick="showStoresList()">← العودة للرئيسية</button>
         <div id="storesWrapper" class="grid"></div>
         <div id="productsWrapper" style="display:none;">
-            <h2 id="currentStoreName" style="text-align: center; margin-bottom: 35px;"></h2>
+            <h2 id="currentStoreName" style="text-align: center; margin-bottom: 35px; color: var(--accent-purple);"></h2>
             <div id="productsGrid" class="grid"></div>
         </div>
     </div>
 
     <div class="overlay" id="overlay" onclick="toggleCart()"></div>
     <div id="cartModal">
-        <h3 style="text-align: center;">تفاصيل الحقيبة</h3>
+        <h3 style="text-align: center; color: var(--accent-purple);">مراجعة طلباتك</h3>
         <div id="cartItems"></div>
-        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
-        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 1.3em;">
+        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #333;">
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 1.4em;">
             <span style="font-weight: bold;">الإجمالي:</span>
-            <span style="color: var(--brand-main); font-weight: 900;"><span id="totalPrice">0</span> ريال</span>
+            <span style="color: var(--accent-purple); font-weight: 900;"><span id="totalPrice">0</span> ريال</span>
         </div>
-        <button class="btn btn-whatsapp" onclick="sendToWhatsApp()">إتمام الطلب عبر WhatsApp</button>
+        <button class="btn btn-whatsapp" onclick="sendToWhatsApp()">إرسال عبر WhatsApp</button>
     </div>
 
     <script>
@@ -158,12 +161,13 @@
 
         function renderStores() {
             const wrapper = document.getElementById('storesWrapper');
+            wrapper.innerHTML = '';
             storesData.forEach(store => {
                 wrapper.innerHTML += `
                     <div class="store-card" onclick="viewStore(${store.id})">
                         <h2>${store.name}</h2>
                         <p>${store.desc}</p>
-                        <button class="btn btn-dark" style="margin-top:20px;">تصفح المتجر</button>
+                        <button class="btn btn-purple" style="margin-top:20px; border-radius:30px;">دخول المتجر</button>
                     </div>`;
             });
         }
@@ -180,10 +184,10 @@
             demoProducts.forEach(item => {
                 grid.innerHTML += `
                     <div class="product-card">
-                        <div class="img-placeholder">PREVIEW</div>
-                        <h4>${item.name}</h4>
-                        <p style="color:var(--brand-main); font-weight:bold; font-size:1.3em;">${item.price} ريال</p>
-                        <button class="btn btn-dark" onclick="addToCart('${item.name}', ${item.price}, '${store.name}')">أضف للحقيبة</button>
+                        <div class="img-placeholder">Product View</div>
+                        <h4 style="margin:10px 0;">${item.name}</h4>
+                        <p style="color:var(--accent-purple); font-weight:bold; font-size:1.3em; margin:10px 0;">${item.price} ريال</p>
+                        <button class="btn btn-purple" onclick="addToCart('${item.name}', ${item.price}, '${store.name}')">أضف للحقيبة</button>
                     </div>`;
             });
         }
@@ -192,6 +196,7 @@
             document.getElementById('storesWrapper').style.display = 'grid';
             document.getElementById('productsWrapper').style.display = 'none';
             document.getElementById('backBtn').style.display = 'none';
+            renderStores();
         }
 
         function addToCart(name, price, store) {
@@ -202,7 +207,7 @@
             btn.style.background = "#25d366";
             setTimeout(() => {
                 btn.innerText = "أضف للحقيبة";
-                btn.style.background = "var(--brand-dark)";
+                btn.style.background = "var(--gradient)";
             }, 1000);
         }
 
@@ -211,8 +216,8 @@
             const overlay = document.getElementById('overlay');
             const itemsDiv = document.getElementById('cartItems');
             
-            itemsDiv.innerHTML = cart.length === 0 ? "<p style='text-align:center;'>الحقيبة فارغة</p>" : 
-                cart.map(i => `<p style="font-size:0.9em; border-bottom:1px solid #eee; padding:10px 0;"><b>${i.name}</b> <br> <span style="color:#888;">من: ${i.store}</span> | <b>${i.price} ريال</b></p>`).join('');
+            itemsDiv.innerHTML = cart.length === 0 ? "<p style='text-align:center; color:#666;'>الحقيبة فارغة</p>" : 
+                cart.map(i => `<p style="font-size:0.9em; border-bottom:1px solid #333; padding:12px 0;"><b>${i.name}</b> <br> <span style="color:var(--text-dim);">من: ${i.store}</span> | <b>${i.price} ريال</b></p>`).join('');
             
             const total = cart.reduce((sum, i) => sum + i.price, 0);
             document.getElementById('totalPrice').innerText = total;
@@ -223,7 +228,7 @@
 
         function sendToWhatsApp() {
             if(cart.length === 0) return;
-            let msg = "*طلب جديد - منصة MODERN HUB*\n";
+            let msg = "*طلب شراء جديد - MODERN HUB*\n";
             msg += "----------------------------\n";
             cart.forEach((i, index) => {
                 msg += `${index+1}. *${i.name}* (${i.store})\n   السعر: ${i.price} ريال\n`;
