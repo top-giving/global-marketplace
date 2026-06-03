@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>سوق التجار المشترك</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background-color: #f0f2f5; padding: 20px; }
+        .store-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 20px; }
+        .store-card { background: white; border: 1px solid #ddd; padding: 20px; border-radius: 10px; width: 200px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .store-name { font-weight: bold; color: #1a73e8; font-size: 1.2em; }
+        button { background-color: #28a745; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>مرحباً بك في منصة التجار</h1>
+    <p>اختر متجراً للبدء بالتسوق:</p>
+
+    <div class="store-container" id="storesList">
+        </div>
+
+    <script>
+        // مصفوفة المتاجر (هنا نضيف أي تاجر جديد)
+        const stores = [
+            { id: 1, name: "متجر أحمد للإلكترونيات" },
+            { id: 2, name: "ركن الأناقة - سارة" },
+            { id: 3, name: "مخبز البركة" }
+        ];
+
+        const container = document.getElementById('storesList');
+
+        // وظيفة عرض المتاجر برمجياً
+        stores.forEach(store => {
+            container.innerHTML += `
+                <div class="store-card">
+                    <div class="store-name">${store.name}</div>
+                    <button onclick="alert('سنتوجه قريباً لمتجر ' + '${store.name}')">دخول المتجر</button>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
