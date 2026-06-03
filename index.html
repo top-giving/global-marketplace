@@ -3,100 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة المتاجر الرجالية</title>
+    <title>منصة سوق المتاجر الرجالية</title>
     <style>
-        :root { --main-dark: #111; --accent: #25d366; --bg: #f4f7f6; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--bg); margin: 0; padding: 0; }
+        :root { --primary-black: #1a1a1a; --whatsapp-green: #25d366; --bg-gray: #f8f9fa; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--bg-gray); margin: 0; padding: 0; }
         
         /* الهيدر */
-        header { background: white; padding: 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        .cart-status { margin-top: 10px; cursor: pointer; color: var(--main-dark); font-weight: bold; }
+        header { background: white; padding: 20px; text-align: center; box-shadow: 0 2px 15px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .cart-box { margin-top: 10px; cursor: pointer; color: var(--primary-black); font-weight: bold; background: #eee; display: inline-block; padding: 8px 20px; border-radius: 50px; }
 
-        /* حاوية المتاجر والمنتجات */
-        .container { max-width: 1000px; margin: 20px auto; padding: 0 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
         
         /* بطاقة المتجر */
-        .store-card { background: white; border-radius: 15px; padding: 30px; text-align: center; cursor: pointer; transition: 0.3s; border: 1px solid #eee; }
-        .store-card:hover { transform: translateY(-10px); border-color: var(--main-dark); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .store-card h2 { margin: 0; color: var(--main-dark); }
-        .store-card p { color: #666; font-size: 0.9em; }
+        .store-card { background: white; border-radius: 15px; padding: 35px; text-align: center; cursor: pointer; transition: 0.3s; border: 1px solid #eee; }
+        .store-card:hover { transform: translateY(-10px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); border-color: var(--primary-black); }
+        .store-card h2 { margin: 0 0 10px; font-size: 1.5em; }
+        .store-card p { color: #888; font-size: 0.9em; margin-bottom: 15px; }
 
         /* بطاقة المنتج */
-        .product-card { background: white; border-radius: 10px; padding: 15px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .product-card img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; }
+        .product-card { background: white; border-radius: 12px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+        /* استبدال صورة الكلب بمربع رمادي أنيق لحين إضافة صورك */
+        .img-placeholder { width: 100%; height: 250px; background: #ddd; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #777; margin-bottom: 15px; font-weight: bold; }
         
         /* الأزرار */
-        .btn { border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px; transition: 0.3s; }
-        .btn-dark { background: var(--main-dark); color: white; }
-        .btn-back { background: #eee; color: #333; width: auto; margin-bottom: 20px; display: none; }
-        .btn-whatsapp { background: var(--accent); color: white; font-size: 1.2em; }
+        .btn { border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; }
+        .btn-dark { background: var(--primary-black); color: white; }
+        .btn-back { background: #666; color: white; width: auto; margin-bottom: 25px; display: none; }
+        .btn-whatsapp { background: var(--whatsapp-green); color: white; font-size: 1.2em; margin-top: 20px; }
 
         /* السلة */
-        #cartModal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 20px; z-index: 2000; width: 85%; max-width: 400px; box-shadow: 0 0 50px rgba(0,0,0,0.4); }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1500; }
+        #cartModal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 20px; z-index: 2000; width: 90%; max-width: 450px; box-shadow: 0 0 60px rgba(0,0,0,0.5); }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1500; backdrop-filter: blur(4px); }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>سوق المتاجر الرجالية</h1>
-        <div class="cart-status" onclick="toggleCart()">🛒 سلة المشتريات (<span id="cartCount">0</span>)</div>
+        <h1>سوق الملابس الرجالية الجاهزة</h1>
+        <div class="cart-box" onclick="toggleCart()">🛒 سلة الطلبات (<span id="cartCount">0</span>)</div>
     </header>
 
     <div class="container">
         <button class="btn btn-back" id="backBtn" onclick="showStoresList()">← العودة لقائمة المتاجر</button>
 
-        <div id="storesWrapper" class="grid">
-            </div>
+        <div id="storesWrapper" class="grid"></div>
 
         <div id="productsWrapper" style="display:none;">
-            <h2 id="currentStoreName" style="text-align: center;"></h2>
+            <h2 id="currentStoreName" style="text-align: center; margin-bottom: 30px;"></h2>
             <div id="productsGrid" class="grid"></div>
         </div>
     </div>
 
     <div class="overlay" id="overlay" onclick="toggleCart()"></div>
     <div id="cartModal">
-        <h3>تفاصيل طلبك</h3>
-        <div id="cartItems"></div>
+        <h3 style="text-align: center;">مراجعة السلة</h3>
+        <div id="cartItems" style="max-height: 250px; overflow-y: auto;"></div>
         <hr>
-        <p style="font-size: 1.3em; font-weight: bold;">الإجمالي: <span id="totalPrice">0</span> ريال</p>
-        <button class="btn btn-whatsapp" onclick="sendOrder()">تأكيد الطلب (واتساب)</button>
+        <p style="font-size: 1.3em; font-weight: bold; display: flex; justify-content: space-between;">
+            <span>الإجمالي:</span>
+            <span><span id="totalPrice">0</span> ريال</span>
+        </p>
+        <button class="btn btn-whatsapp" onclick="sendToWhatsApp()">إرسال الطلب عبر واتساب</button>
     </div>
 
     <script>
         const MY_PHONE = "966560564719";
 
-        // هيكل البيانات للمتاجر الثلاثة
+        // قائمة المتاجر الجديدة (6 تجار)
         const storesData = [
-            {
-                id: 1,
-                name: "توب جيفينج (Top Giving)",
-                desc: "أحدث صيحات الملابس الجاهزة والكاجوال",
-                items: [
-                    { name: "تيشيرت أوفرسايز", price: 125, img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=400" },
-                    { name: "بنطال كارغو زيتي", price: 150, img: "https://images.unsplash.com/photo-1517423568366-8b83523034fd?w=400" }
-                ]
-            },
-            {
-                id: 2,
-                name: "أناقة الشرق",
-                desc: "ملابس رجالية جاهزة بلمسة شرقية عصرية",
-                items: [
-                    { name: "قميص كتان بيج", price: 140, img: "https://images.unsplash.com/photo-1598033129183-c4f50c7176c8?w=400" },
-                    { name: "بنطال شينو رسمي", price: 170, img: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=400" }
-                ]
-            },
-            {
-                id: 3,
-                name: "عزوة",
-                desc: "للملابس الرجالية الفاخرة والجاهزة",
-                items: [
-                    { name: "هودي قطني شتوي", price: 190, img: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400" },
-                    { name: "جاكيت كاجوال", price: 280, img: "https://images.unsplash.com/photo-1591047134402-3939f38d350b?w=400" }
-                ]
-            }
+            { id: 1, name: "توب جيفينج", desc: "أحدث موديلات الملابس الجاهزة" },
+            { id: 2, name: "أناقة الشرق", desc: "تميز في اختياراتك الرجالية" },
+            { id: 3, name: "عزوة", desc: "للملابس الفاخرة والعصرية" },
+            { id: 4, name: "زهرة بلقيس", desc: "تشكيلة ملابس جاهزة متنوعة" },
+            { id: 5, name: "ديرة نجد", desc: "أناقة الملبس الرجالي الجاهز" },
+            { id: 6, name: "علي عقيل", desc: "موديلات حصرية بجودة عالية" }
+        ];
+
+        // منتجات تجريبية (يتم توزيعها على كل متجر)
+        const demoProducts = [
+            { name: "تيشيرت صيفي فاخر", price: 95 },
+            { name: "بنطال كاجوال مريح", price: 140 },
+            { name: "كنزة عصرية", price: 180 }
         ];
 
         let cart = [];
@@ -122,12 +110,13 @@
 
             const grid = document.getElementById('productsGrid');
             grid.innerHTML = '';
-            store.items.forEach(item => {
+            // عرض المنتجات التجريبية لكل متجر
+            demoProducts.forEach(item => {
                 grid.innerHTML += `
                     <div class="product-card">
-                        <img src="${item.img}">
+                        <div class="img-placeholder">صورة المنتج</div>
                         <h4>${item.name}</h4>
-                        <p style="color:red; font-weight:bold;">${item.price} ريال</p>
+                        <p style="color:#e67e22; font-weight:bold; font-size:1.2em;">${item.price} ريال</p>
                         <button class="btn btn-dark" onclick="addToCart('${item.name}', ${item.price}, '${store.name}')">أضف للسلة</button>
                     </div>`;
             });
@@ -142,7 +131,7 @@
         function addToCart(name, price, store) {
             cart.push({name, price, store});
             document.getElementById('cartCount').innerText = cart.length;
-            alert(`تم إضافة ${name} من متجر ${store}`);
+            alert(`تمت إضافة ${name} من متجر ${store}`);
         }
 
         function toggleCart() {
@@ -150,8 +139,8 @@
             const overlay = document.getElementById('overlay');
             const itemsDiv = document.getElementById('cartItems');
             
-            itemsDiv.innerHTML = cart.length === 0 ? "<p>السلة فارغة</p>" : 
-                cart.map(i => `<p style="font-size:0.9em; border-bottom:1px solid #eee; padding:5px;">${i.name} (${i.store}) - <b>${i.price} ريال</b></p>`).join('');
+            itemsDiv.innerHTML = cart.length === 0 ? "<p style='text-align:center;'>السلة فارغة حالياً</p>" : 
+                cart.map(i => `<p style="font-size:0.9em; border-bottom:1px solid #eee; padding:8px 0;"><b>${i.name}</b> <br> <span style="color:#666;">من: ${i.store}</span> | <b>${i.price} ريال</b></p>`).join('');
             
             const total = cart.reduce((sum, i) => sum + i.price, 0);
             document.getElementById('totalPrice').innerText = total;
@@ -160,11 +149,11 @@
             overlay.style.display = overlay.style.display === 'block' ? 'none' : 'block';
         }
 
-        function sendOrder() {
-            if(cart.length === 0) return;
-            let msg = "طلب جديد من المنصة:\n\n";
+        function sendToWhatsApp() {
+            if(cart.length === 0) return alert("السلة فارغة!");
+            let msg = "طلب جديد من سوق الملابس:\n\n";
             cart.forEach((i, index) => {
-                msg += `${index+1}. ${i.name} [متجر ${i.store}] - ${i.price} ريال\n`;
+                msg += `${index+1}. ${i.name} (${i.store}) - ${i.price} ريال\n`;
             });
             msg += `\nإجمالي المبلغ: ${document.getElementById('totalPrice').innerText} ريال`;
             window.open(`https://wa.me/${MY_PHONE}?text=${encodeURIComponent(msg)}`);
