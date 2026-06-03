@@ -3,141 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سوق الملابس الرجالية | الرؤية الحديثة</title>
+    <title>منصة سوق الملابس | الهوية العصرية</title>
     <style>
-        /* هوية الألوان المستوحاة من بنك فيجن */
         :root {
-            --vision-navy: #0a192f; /* الأزرق الداكن الفخم */
-            --vision-gold: #c5a059; /* الذهبي الراقي */
-            --vision-light: #f4f7fa; /* خلفية هادئة */
-            --vision-white: #ffffff;
-            --vision-text: #2d3436;
+            --brand-main: #6c5ce7; /* البنفسجي العصري */
+            --brand-dark: #2d3436; /* الأسود الفحمي */
+            --brand-light: #f9f9ff; /* خلفية ناصعة */
+            --brand-white: #ffffff;
+            --accent-gradient: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
         }
 
         body { 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            background-color: var(--vision-light); 
+            font-family: 'Segoe UI', Roboto, sans-serif; 
+            background-color: var(--brand-light); 
             margin: 0; 
             padding: 0; 
-            color: var(--vision-text);
+            color: var(--brand-dark);
         }
         
-        /* الهيدر بتصميم بنكي حديث */
+        /* هيدر عصري متدرج */
         header { 
-            background: var(--vision-navy); 
-            padding: 25px; 
+            background: var(--brand-dark); 
+            padding: 30px; 
             text-align: center; 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15); 
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.2); 
             position: sticky; 
             top: 0; 
             z-index: 1000;
-            border-bottom: 3px solid var(--vision-gold);
         }
         header h1 { 
-            color: var(--vision-white); 
+            color: var(--brand-white); 
             margin: 0; 
-            font-size: 1.6em; 
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            font-size: 1.8em; 
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
         }
         
         .cart-box { 
             margin-top: 15px; 
             cursor: pointer; 
-            color: var(--vision-navy); 
-            background: var(--vision-gold); 
+            color: white; 
+            background: var(--accent-gradient); 
             display: inline-block; 
-            padding: 10px 25px; 
-            border-radius: 30px; 
+            padding: 12px 30px; 
+            border-radius: 12px; 
             font-weight: bold;
             transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(197, 160, 89, 0.3);
+            border: none;
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
         }
-        .cart-box:hover { transform: scale(1.05); }
+        .cart-box:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(108, 92, 231, 0.4); }
 
         .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
         
-        /* بطاقات المتاجر بتصميم Premium */
+        /* بطاقات المتاجر */
         .store-card { 
-            background: var(--vision-white); 
-            border-radius: 20px; 
-            padding: 40px 20px; 
+            background: var(--brand-white); 
+            border-radius: 24px; 
+            padding: 40px 25px; 
             text-align: center; 
             cursor: pointer; 
-            transition: 0.4s; 
-            border: 1px solid rgba(10, 25, 47, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-        .store-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--vision-gold);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            border: 2px solid transparent;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
         }
         .store-card:hover { 
-            transform: translateY(-12px); 
-            box-shadow: 0 20px 40px rgba(10, 25, 47, 0.1); 
+            border-color: #a29bfe;
+            transform: scale(1.03); 
+            box-shadow: 0 20px 40px rgba(108, 92, 231, 0.1); 
         }
-        .store-card h2 { color: var(--vision-navy); margin-bottom: 10px; }
-        .store-card p { color: #636e72; font-size: 0.95em; }
+        .store-card h2 { color: var(--brand-dark); margin-bottom: 10px; }
+        .store-card p { color: #b2bec3; font-size: 0.9em; }
 
         /* بطاقة المنتج */
         .product-card { 
-            background: var(--vision-white); 
-            border-radius: 15px; 
+            background: var(--brand-white); 
+            border-radius: 20px; 
             padding: 20px; 
             text-align: center; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
-            border-bottom: 2px solid transparent;
             transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
         }
-        .product-card:hover { border-bottom: 2px solid var(--vision-gold); }
         .img-placeholder { 
-            width: 100%; height: 260px; background: #eaeff5; border-radius: 12px; 
-            display: flex; align-items: center; justify-content: center; color: #95a5a6; margin-bottom: 15px; 
+            width: 100%; height: 280px; background: #dfe6e9; border-radius: 15px; 
+            display: flex; align-items: center; justify-content: center; color: #636e72; margin-bottom: 15px; 
         }
         
-        /* الأزرار بنمط بنكي */
-        .btn { border: none; padding: 14px; border-radius: 10px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; }
-        .btn-dark { background: var(--vision-navy); color: var(--vision-white); }
-        .btn-dark:hover { background: #1c2d4d; }
-        .btn-back { background: #dfe6e9; color: var(--vision-navy); width: auto; margin-bottom: 30px; display: none; }
-        .btn-whatsapp { background: #27ae60; color: white; font-size: 1.1em; margin-top: 20px; }
+        /* الأزرار */
+        .btn { border: none; padding: 15px; border-radius: 12px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; }
+        .btn-dark { background: var(--brand-dark); color: white; }
+        .btn-dark:hover { background: var(--brand-main); }
+        .btn-back { background: #eee; color: var(--brand-dark); width: auto; margin-bottom: 30px; display: none; }
+        .btn-whatsapp { background: #25d366; color: white; font-size: 1.1em; margin-top: 20px; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2); }
 
-        /* السلة الحديثة */
+        /* السلة */
         #cartModal { 
             display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-            background: var(--vision-white); padding: 35px; border-radius: 25px; z-index: 2000; 
-            width: 90%; max-width: 450px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); 
+            background: white; padding: 35px; border-radius: 30px; z-index: 2000; 
+            width: 90%; max-width: 450px; box-shadow: 0 40px 80px rgba(0,0,0,0.3); 
         }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 25, 47, 0.85); z-index: 1500; backdrop-filter: blur(8px); }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1500; backdrop-filter: blur(10px); }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>سوق الملابس الرجالية | VISION</h1>
-        <div class="cart-box" onclick="toggleCart()">🛒 ملخص السلة (<span id="cartCount">0</span>)</div>
+        <h1>سوق المتاجر الرجالية | MODERN HUB</h1>
+        <button class="cart-box" onclick="toggleCart()">🛒 حقيبة التسوق (<span id="cartCount">0</span>)</button>
     </header>
 
     <div class="container">
-        <button class="btn btn-back" id="backBtn" onclick="showStoresList()">← العودة للشركاء</button>
+        <button class="btn btn-back" id="backBtn" onclick="showStoresList()">← العودة للمتاجر</button>
         <div id="storesWrapper" class="grid"></div>
         <div id="productsWrapper" style="display:none;">
-            <h2 id="currentStoreName" style="text-align: center; color: var(--vision-navy); margin-bottom: 35px;"></h2>
+            <h2 id="currentStoreName" style="text-align: center; margin-bottom: 35px;"></h2>
             <div id="productsGrid" class="grid"></div>
         </div>
     </div>
 
     <div class="overlay" id="overlay" onclick="toggleCart()"></div>
     <div id="cartModal">
-        <h3 style="color: var(--vision-navy); text-align: center;">إتمام عملية الطلب</h3>
-        <div id="cartItems" style="max-height: 250px; overflow-y: auto;"></div>
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-weight: bold; font-size: 1.2em;">إجمالي الاستحقاق:</span>
-            <span style="color: var(--vision-gold); font-weight: bold; font-size: 1.5em;"><span id="totalPrice">0</span> ريال</span>
+        <h3 style="text-align: center;">تفاصيل الحقيبة</h3>
+        <div id="cartItems"></div>
+        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 1.3em;">
+            <span style="font-weight: bold;">الإجمالي:</span>
+            <span style="color: var(--brand-main); font-weight: 900;"><span id="totalPrice">0</span> ريال</span>
         </div>
-        <button class="btn btn-whatsapp" onclick="sendToWhatsApp()">إرسال الطلب عبر WhatsApp</button>
+        <button class="btn btn-whatsapp" onclick="sendToWhatsApp()">إتمام الطلب عبر WhatsApp</button>
     </div>
 
     <script>
@@ -153,9 +149,9 @@
         ];
 
         const demoProducts = [
-            { name: "تيشيرت بريميوم قطن", price: 135 },
-            { name: "بنطال مودرن سليم", price: 165 },
-            { name: "جاكيت خفيف عصري", price: 210 }
+            { name: "تيشيرت عصري مودرن", price: 115 },
+            { name: "بنطال كاجوال مريح", price: 145 },
+            { name: "جاكيت خفيف شيك", price: 195 }
         ];
 
         let cart = [];
@@ -167,7 +163,7 @@
                     <div class="store-card" onclick="viewStore(${store.id})">
                         <h2>${store.name}</h2>
                         <p>${store.desc}</p>
-                        <button class="btn btn-dark" style="margin-top:20px;">تصفح التشكيلة</button>
+                        <button class="btn btn-dark" style="margin-top:20px;">تصفح المتجر</button>
                     </div>`;
             });
         }
@@ -184,9 +180,9 @@
             demoProducts.forEach(item => {
                 grid.innerHTML += `
                     <div class="product-card">
-                        <div class="img-placeholder">IMAGE PREVIEW</div>
-                        <h4 style="color:var(--vision-navy);">${item.name}</h4>
-                        <p style="color:var(--vision-gold); font-weight:bold; font-size:1.3em; margin:10px 0;">${item.price} ريال</p>
+                        <div class="img-placeholder">PREVIEW</div>
+                        <h4>${item.name}</h4>
+                        <p style="color:var(--brand-main); font-weight:bold; font-size:1.3em;">${item.price} ريال</p>
                         <button class="btn btn-dark" onclick="addToCart('${item.name}', ${item.price}, '${store.name}')">أضف للحقيبة</button>
                     </div>`;
             });
@@ -201,13 +197,12 @@
         function addToCart(name, price, store) {
             cart.push({name, price, store});
             document.getElementById('cartCount').innerText = cart.length;
-            // لا حاجة لـ alert، سنغير نص الزر مؤقتاً لمزيد من الاحترافية
             const btn = event.target;
-            btn.innerText = "✓ تم الحجز";
-            btn.style.background = "#27ae60";
+            btn.innerText = "✓ تمت الإضافة";
+            btn.style.background = "#25d366";
             setTimeout(() => {
                 btn.innerText = "أضف للحقيبة";
-                btn.style.background = "var(--vision-navy)";
+                btn.style.background = "var(--brand-dark)";
             }, 1000);
         }
 
@@ -216,26 +211,25 @@
             const overlay = document.getElementById('overlay');
             const itemsDiv = document.getElementById('cartItems');
             
-            itemsDiv.innerHTML = cart.length === 0 ? "<p style='text-align:center;'>حقيبة التسوق فارغة</p>" : 
-                cart.map(i => `<p style="font-size:0.9em; border-bottom:1px solid #eee; padding:12px 0;"><b>${i.name}</b> <br> <span style="color:#666;">المصدر: ${i.store}</span> | <b>${i.price} ريال</b></p>`).join('');
+            itemsDiv.innerHTML = cart.length === 0 ? "<p style='text-align:center;'>الحقيبة فارغة</p>" : 
+                cart.map(i => `<p style="font-size:0.9em; border-bottom:1px solid #eee; padding:10px 0;"><b>${i.name}</b> <br> <span style="color:#888;">من: ${i.store}</span> | <b>${i.price} ريال</b></p>`).join('');
             
             const total = cart.reduce((sum, i) => sum + i.price, 0);
             document.getElementById('totalPrice').innerText = total;
 
-            const isVisible = modal.style.display === 'block';
-            modal.style.display = isVisible ? 'none' : 'block';
-            overlay.style.display = isVisible ? 'none' : 'block';
+            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+            overlay.style.display = overlay.style.display === 'block' ? 'none' : 'block';
         }
 
         function sendToWhatsApp() {
             if(cart.length === 0) return;
-            let msg = "*طلب شراء جديد - منصة VISION*\n";
-            msg += "--------------------------\n";
+            let msg = "*طلب جديد - منصة MODERN HUB*\n";
+            msg += "----------------------------\n";
             cart.forEach((i, index) => {
                 msg += `${index+1}. *${i.name}* (${i.store})\n   السعر: ${i.price} ريال\n`;
             });
-            msg += "--------------------------\n";
-            msg += `*الإجمالي المستحق: ${document.getElementById('totalPrice').innerText} ريال*`;
+            msg += "----------------------------\n";
+            msg += `*الإجمالي الكلي: ${document.getElementById('totalPrice').innerText} ريال*`;
             window.open(`https://wa.me/${MY_PHONE}?text=${encodeURIComponent(msg)}`);
         }
 
