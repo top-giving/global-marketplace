@@ -3,125 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MODERN HUB | Dynamic Experience</title>
+    <title>سوق الملابس الرجالية | TOP GIVING</title>
     <style>
         :root {
-            --purple: #6c5ce7;
-            --blue: #0984e3;
-            --dark: #0f0c29;
+            --soft-white: #fcfcfc;
+            --main-black: #1a1a1a;
+            --gold-accent: #c5a059;
+            --text-gray: #7f8c8d;
         }
 
-        /* 1. تأثير الخلفية المتحركة */
         body { 
-            font-family: 'Segoe UI', sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            color: white;
-            background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #0f0f12);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            min-height: 100vh;
+            font-family: 'Segoe UI', Roboto, sans-serif; 
+            background-color: var(--soft-white); 
+            margin: 0; padding: 0; color: var(--main-black);
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* 2. هيدر زجاجي */
+        /* هيدر ناصع البياض وبسيط */
         header { 
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(15px);
-            padding: 25px; 
-            text-align: center; 
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px; text-align: center;
+            border-bottom: 1px solid #eee;
             position: sticky; top: 0; z-index: 1000;
         }
+        header h1 { 
+            font-size: 1.4em; font-weight: 300; letter-spacing: 3px; 
+            color: var(--main-black); margin: 0;
+        }
 
-        /* 3. تأثير التوهج لأيقونة المتجر */
+        /* سلة المشتريات بشكل عصري */
+        .cart-btn {
+            background: var(--main-black); color: white;
+            border: none; padding: 8px 25px; border-radius: 4px;
+            margin-top: 15px; cursor: pointer; font-size: 0.9em;
+            letter-spacing: 1px;
+        }
+
+        .container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 40px; }
+
+        /* بطاقة المتجر بتصميم Minimalist */
         .store-card { 
-            background: rgba(255, 255, 255, 0.05); 
-            border-radius: 20px; 
-            padding: 40px; 
-            text-align: center; 
-            cursor: pointer; 
-            transition: 0.5s; 
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            position: relative;
+            background: white; border-radius: 0; padding: 50px 20px; 
+            text-align: center; cursor: pointer; transition: 0.4s;
+            border: 1px solid #f0f0f0;
         }
-
         .store-card:hover { 
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--purple);
-            /* توهج الأيقونة */
-            box-shadow: 0 0 20px rgba(108, 92, 231, 0.6), inset 0 0 10px rgba(108, 92, 231, 0.4);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            border-color: var(--gold-accent);
         }
-
         .store-card h2 { 
-            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+            font-weight: 400; font-size: 1.6em; margin-bottom: 10px; 
+            letter-spacing: 1px;
+        }
+        .store-card p { color: var(--text-gray); font-size: 0.85em; margin-bottom: 25px; }
+
+        .btn-discover {
+            background: transparent; border: 1px solid var(--main-black);
+            padding: 10px 30px; font-size: 0.8em; font-weight: bold;
+            transition: 0.3s; cursor: pointer;
+        }
+        .store-card:hover .btn-discover {
+            background: var(--main-black); color: white;
         }
 
-        /* تصميم الأزرار والشبكة */
-        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
-        
-        .btn-glow {
-            background: var(--purple);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(108, 92, 231, 0.4);
-            transition: 0.3s;
+        /* عرض المنتجات */
+        .product-card { background: white; padding: 15px; text-align: center; }
+        .product-img { 
+            width: 100%; height: 350px; background: #f7f7f7; 
+            margin-bottom: 20px; display: flex; align-items: center; 
+            justify-content: center; color: #ccc; font-size: 0.8em;
         }
-        .btn-glow:hover { box-shadow: 0 0 25px rgba(108, 92, 231, 0.8); transform: scale(1.05); }
 
-        /* السلة والتفاصيل */
+        /* السلة */
         #cartModal { 
-            display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-            background: rgba(15, 15, 18, 0.95); padding: 35px; border-radius: 30px; z-index: 2000; 
-            width: 90%; max-width: 450px; border: 1px solid var(--purple);
-            backdrop-filter: blur(20px);
+            display: none; position: fixed; top: 0; left: 0; 
+            width: 100%; height: 100%; background: white; 
+            z-index: 2000; padding: 50px; box-sizing: border-box;
         }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1500; }
-        
-        .product-card { background: rgba(0,0,0,0.2); border-radius: 15px; padding: 20px; border: 1px solid rgba(255,255,255,0.05); text-align: center; }
-        .img-box { width: 100%; height: 250px; background: rgba(255,255,255,0.05); border-radius: 12px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; color: #555; }
     </style>
 </head>
 <body>
 
     <header>
-        <h1 style="background: linear-gradient(to right, #fff, var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">TOP GIVING MARKET</h1>
-        <div style="margin-top: 15px;">
-            <button class="btn-glow" onclick="toggleCart()">🛒 حقيبة التسوق (<span id="cartCount">0</span>)</button>
-        </div>
+        <h1>TOP GIVING MARKET</h1>
+        <button class="cart-btn" onclick="toggleCart()">حقيبة التسوق (<span id="cartCount">0</span>)</button>
     </header>
 
     <div class="container">
-        <button id="backBtn" class="btn-glow" style="background:#444; margin-bottom: 20px; display: none;" onclick="showStoresList()">← المتاجر</button>
-        <div id="storesWrapper" class="grid"></div>
+        <div id="storesWrapper" class="grid">
+            </div>
+
         <div id="productsWrapper" style="display:none;">
-            <h2 id="currentStoreName" style="text-align: center; color: var(--purple); margin-bottom: 30px;"></h2>
+            <button onclick="showStoresList()" style="background:none; border:none; cursor:pointer; margin-bottom:30px;">← العودة للمتاجر</button>
+            <h2 id="currentStoreName" style="text-align:center; font-weight:300; font-size:2em; margin-bottom:40px;"></h2>
             <div id="productsGrid" class="grid"></div>
         </div>
     </div>
 
-    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
     <div id="cartModal">
-        <h3 style="text-align: center;">إتمام الطلب الرقمي</h3>
-        <div id="cartItems"></div>
-        <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
-        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 1.4em;">
-            <span>الإجمالي:</span>
-            <span style="color: var(--purple); font-weight: bold;"><span id="totalPrice">0</span> ريال</span>
-        </div>
-        <button class="btn-glow" style="background: #25d366; width: 100%; margin-top: 20px; font-size: 1.1em;" onclick="sendToWhatsApp()">واتساب</button>
+        <button onclick="toggleCart()" style="float:left; background:none; border:none; font-size:1.5em; cursor:pointer;">✕</button>
+        <h2 style="font-weight:300;">طلباتك المختارة</h2>
+        <div id="cartItems" style="margin-top:50px;"></div>
+        <hr style="border:0; border-top:1px solid #eee; margin:40px 0;">
+        <div style="font-size: 1.5em;">الإجمالي: <span id="totalPrice">0</span> ريال</div>
+        <button class="cart-btn" style="width:100%; padding:20px; margin-top:30px; background:#25d366;" onclick="sendToWhatsApp()">إرسال الطلب عبر واتساب</button>
     </div>
 
     <script>
@@ -136,9 +123,9 @@
         ];
 
         const demoProducts = [
-            { name: "تيشيرت عصري", price: 120 },
-            { name: "بنطال كاجوال", price: 150 },
-            { name: "جاكيت شيك", price: 200 }
+            { name: "تيشيرت بريميوم", price: 150 },
+            { name: "بنطال كلاسيك", price: 180 },
+            { name: "جاكيت عصري", price: 320 }
         ];
 
         let cart = [];
@@ -151,7 +138,7 @@
                     <div class="store-card" onclick="viewStore(${store.id})">
                         <h2>${store.name}</h2>
                         <p>${store.desc}</p>
-                        <button class="btn-glow" style="margin-top:20px;">دخول</button>
+                        <button class="btn-discover">اكتشف المجموعة</button>
                     </div>`;
             });
         }
@@ -160,7 +147,6 @@
             const store = storesData.find(s => s.id === id);
             document.getElementById('storesWrapper').style.display = 'none';
             document.getElementById('productsWrapper').style.display = 'block';
-            document.getElementById('backBtn').style.display = 'inline-block';
             document.getElementById('currentStoreName').innerText = store.name;
 
             const grid = document.getElementById('productsGrid');
@@ -168,10 +154,10 @@
             demoProducts.forEach(item => {
                 grid.innerHTML += `
                     <div class="product-card">
-                        <div class="img-box">IMAGE</div>
-                        <h4>${item.name}</h4>
-                        <p style="color:var(--purple); font-weight:bold;">${item.price} ريال</p>
-                        <button class="btn-glow" onclick="addToCart('${item.name}', ${item.price}, '${store.name}')">إضافة للسلة</button>
+                        <div class="product-img">صورة المنتج</div>
+                        <h3 style="font-weight:400;">${item.name}</h3>
+                        <p style="color:var(--gold-accent); font-weight:bold;">${item.price} ريال</p>
+                        <button class="btn-discover" onclick="addToCart('${item.name}', ${item.price}, '${store.name}')">أضف للحقيبة</button>
                     </div>`;
             });
         }
@@ -179,38 +165,29 @@
         function showStoresList() {
             document.getElementById('storesWrapper').style.display = 'grid';
             document.getElementById('productsWrapper').style.display = 'none';
-            document.getElementById('backBtn').style.display = 'none';
             renderStores();
         }
 
         function addToCart(name, price, store) {
             cart.push({name, price, store});
             document.getElementById('cartCount').innerText = cart.length;
-            const btn = event.target;
-            btn.innerText = "✓ تمت الإضافة";
-            btn.style.background = "#25d366";
-            setTimeout(() => {
-                btn.innerText = "إضافة للسلة";
-                btn.style.background = "var(--purple)";
-            }, 1000);
+            event.stopPropagation();
         }
 
         function toggleCart() {
             const modal = document.getElementById('cartModal');
-            const overlay = document.getElementById('overlay');
             const itemsDiv = document.getElementById('cartItems');
             itemsDiv.innerHTML = cart.length === 0 ? "<p>الحقيبة فارغة</p>" : 
-                cart.map(i => `<p style="font-size:0.9em; border-bottom:1px solid rgba(255,255,255,0.1); padding:10px 0;">${i.name} (${i.store}) - <b>${i.price} ريال</b></p>`).join('');
+                cart.map(i => `<p>${i.name} - ${i.price} ريال</p>`).join('');
             const total = cart.reduce((sum, i) => sum + i.price, 0);
             document.getElementById('totalPrice').innerText = total;
             modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
-            overlay.style.display = overlay.style.display === 'block' ? 'none' : 'block';
         }
 
         function sendToWhatsApp() {
             if(cart.length === 0) return;
-            let msg = "*طلب شراء جديد - MODERN HUB*\n";
-            cart.forEach((i, idx) => msg += `${idx+1}. ${i.name} (${i.store}) - ${i.price} ريال\n`);
+            let msg = "*طلب من TOP GIVING MARKET*\n";
+            cart.forEach((i, idx) => msg += `${idx+1}. ${i.name} - ${i.price} ريال\n`);
             msg += `\n*الإجمالي: ${document.getElementById('totalPrice').innerText} ريال*`;
             window.open(`https://wa.me/${MY_PHONE}?text=${encodeURIComponent(msg)}`);
         }
